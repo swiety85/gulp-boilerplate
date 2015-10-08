@@ -1,0 +1,28 @@
+{
+  "name": "gulp-boilerplate",
+  "version": "0.1.0",
+  "authors": [
+    "Damian Wajdlich"
+  ],
+  "main": "build/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/swiety85/gulp-boilerplate.git"
+  },
+  "dependencies": {
+    "angular": "~1.4.4",
+    "bootstrap": "3.3.4",
+    "font-awesome": "~4.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.6"
+  }
+}

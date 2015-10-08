@@ -25,3 +25,15 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+
+# Frontend dependency directory
+/bower_components/
+
+# Development cache
+/_tmp/
+
+# Development reports
+/report/
+
+# Others
+.DS_Store
