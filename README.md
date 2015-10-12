@@ -39,12 +39,45 @@ All frontend unit test files are placed in `tests/client`. This folder consist o
  - `test-helpers` helper methods and fixtures needed for unit tests
 
 ### Frontend dependencies
- ...
+All frontend dependencies are place in `bower_components` gathered by [*Bower*](https://github.com/bower/bower).
+
 ### Build - distribution version
- ...
+Distribution version of of current application is created in `build` folder.
  
 ### Gulp tasks
- ...
+Gulp tasks has been divided into 3 levels:
+ - task config - when it comes to customize tasks to your own project you should first try to do it 
+ only with config part. All configuration for all tasks is placed in `gulp.config.js`.
+ - task registration (`gulpfile.js`) - on second place when task dependencies needs to be changed or some extra task 
+ needs to be registered (from existing ones) - registration part needs to be changed.
+ All gulp tasks are registered in `gulpfile.js`.
+ - task definition (`gulp`) - on last position when task stream needs to be changed or new feature task needs
+ to be created - definition part needs to be extended. Gulp definition is available under `gulp` directory and
+ stored factory modules representing specific gulp task. It also consist utils module. 
+
+
+Every factory module return function with unified list of parameters: task name, task configuration,
+list of task dependency. Structure of configuration is different for different task.
+ 
+Available task factories:
+ - bump
+ Bump the version of your project. Update bower.json and package.json. Available options:
+  - `--type=pre` will bump the prerelease version *.*.*-x
+  - `--type=patch` or no flag will bump the patch version *.*.x
+  - `--type=minor` will bump the minor version *.x.*
+  - `--type=major` will bump the major version x.*.*
+  - `--version=1.2.3` will bump to a specific version and ignore other flags
+ - clean
+ - copy
+ - images
+ - inject
+ - lint
+ - nodemon
+ - optimize
+ - styles
+ - templatecache
+ - test
+ - wiredep
 
 ### Reports
- ...
+All reports should be generated to `report` folder. Currently only code coverage report is possible to generate.
