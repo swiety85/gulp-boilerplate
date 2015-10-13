@@ -18,10 +18,10 @@ that divide different functionality under different directories.
 ### Frontend
 All frontend source files are placed in `/src/client`.
 Client folder consists of:
- - `index.html` html that will bootstrap application prepare to inject all frontend dependencies (JS & CSS).
- - `scripts` all angular js source files and angular templates. All templates needs to be created with `.tpl.html`
- - `styles` all styles defined in [*LESS*](https://github.com/less)
- - `images` all application images
+ - `index.html` - html that will bootstrap application prepare to inject all frontend dependencies (JS & CSS).
+ - `scripts` - all angular js source files and angular templates. All templates needs to be created with `.tpl.html`
+ - `styles` - all styles defined in [*LESS*](https://github.com/less)
+ - `images` - all application images
 
 ### Backend
 All backend source files are placed in `/src/server`.
@@ -33,10 +33,10 @@ Unit tests are running with usage of [*Jasmine*](https://github.com/jasmine/jasm
 [*Karma*](https://github.com/karma-runner/karma).
 Default Karma configuration file is available in `karma.conf.js`.
 All frontend unit test files are placed in `tests/client`. This folder consist of:
- - `scripts` folder that is dedicated for testing each module created in `/src/client/scripts`. It is suggested to have
+ - `scripts` - folder that is dedicated for testing each module created in `/src/client/scripts`. It is suggested to have
  the same file structure in unit test folder as in source folder.
- - `server-integration` unit test for testing integration between client and server.
- - `test-helpers` helper methods and fixtures needed for unit tests
+ - `server-integration` - unit test for testing integration between client and server.
+ - `test-helpers` - helper methods and fixtures needed for unit tests
 
 ### Frontend dependencies
 All frontend dependencies are place in `bower_components` gathered by [*Bower*](https://github.com/bower/bower).
@@ -60,16 +60,27 @@ Every factory module return function with unified list of parameters: task name,
 list of task dependency. Structure of configuration is different for different task.
  
 Available task factories:
- - bump
- Bump the version of your project. Update bower.json and package.json. Available options:
+ - `bump` - Bump the version of your project. Update bower.json and package.json.
+ Task configuration:
+  - `src` - paths to bower.json and package.json file
+ Command options options:
   - `--type=pre` will bump the prerelease version *.*.*-x
   - `--type=patch` or no flag will bump the patch version *.*.x
   - `--type=minor` will bump the minor version *.x.*
   - `--type=major` will bump the major version x.*.*
   - `--version=1.2.3` will bump to a specific version and ignore other flags
- - clean
- - copy
- - images
+ - `clean` - removes given directory.
+ Task configuration:
+  - `src` - path to directory to remove
+ - `copy` - copy one directory to another.
+  Task configuration:
+   - `src` - path to directory to copy
+   - `dest` - path to directory that will store copied directory
+ - `images` - optimize and copy files to directory given by config
+ Task configuration:
+  - `src` - path to image files that needs to be optimize and moved
+  - `dest` - path to directory that will save optimized image files
+  - `optimizationLevel` - (default=4) optimization level (gulp-imagemin)
  - inject
  - lint
  - nodemon
