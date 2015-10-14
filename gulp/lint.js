@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 module.exports = function (taskName, config, depTasks) {
 
     gulp.task(taskName, depTasks, function () {
-        utils.log('Linting: '+config.path);
+        utils.log('Linting: '+config.src);
 
         return gulp
             .src(config.src)

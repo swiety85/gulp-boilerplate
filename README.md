@@ -63,7 +63,7 @@ Available task factories:
  - `bump` - Bump the version of your project. Update bower.json and package.json.
  Task configuration:
   - `src` - paths to bower.json and package.json file
- Command options options:
+ Command options:
   - `--type=pre` will bump the prerelease version *.*.*-x
   - `--type=patch` or no flag will bump the patch version *.*.x
   - `--type=minor` will bump the minor version *.x.*
@@ -81,8 +81,16 @@ Available task factories:
   - `src` - path to image files that needs to be optimize and moved
   - `dest` - path to directory that will save optimized image files
   - `optimizationLevel` - (default=4) optimization level (gulp-imagemin)
- - inject
- - lint
+ - inject - connects JS and CSS files to html file. It use [*gulp-inject*](https://github.com/klei/gulp-inject)
+ Task configuration:
+  - `src` - path to JS/CSS files that needs to be injected to html file
+  - index` - path to index.html file or other html file
+ - lint`- run jshint against your source code. It use [gulp-jshint](https://github.com/spalger/gulp-jshint).
+ It generates clean and readable console report about validation results. 
+  Task configuration:
+   - `src` - path to files that will be validated by jshint
+  Command options:
+    - `--verbose` - extends report about each step of the task e.g. lists all files that has been validated
  - nodemon
  - optimize
  - styles
