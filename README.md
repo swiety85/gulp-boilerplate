@@ -81,22 +81,34 @@ Available task factories:
   - `src` - path to image files that needs to be optimize and moved
   - `dest` - path to directory that will save optimized image files
   - `optimizationLevel` - (default=4) optimization level (gulp-imagemin)
- - inject - connects JS and CSS files to html file. It use [*gulp-inject*](https://github.com/klei/gulp-inject)
+ - `inject` - connects JS and CSS files to html file. It use [*gulp-inject*](https://github.com/klei/gulp-inject)
  Task configuration:
   - `src` - path to JS/CSS files that needs to be injected to html file
-  - index` - path to index.html file or other html file
- - lint`- run jshint against your source code. It use [gulp-jshint](https://github.com/spalger/gulp-jshint).
+  - `index` - path to index.html file or other html file
+ - `lint`- run jshint against your source code. It use [gulp-jshint](https://github.com/spalger/gulp-jshint).
  It generates clean and readable console report about validation results. 
   Task configuration:
    - `src` - path to files that will be validated by jshint
   Command options:
     - `--verbose` - extends report about each step of the task e.g. lists all files that has been validated
- - nodemon
- - optimize
- - styles
- - templatecache
- - test
- - wiredep
+ - `nodemon` - monitor for any changes in your server application and automatically restart the server.
+ It also watches client changes to reload browser. It can be run in dev and prod mode.
+ It use: [gulp-nodemon](https://github.com/JacksonGariety/gulp-nodemon) and [browserSync](http://www.browsersync.io/).
+ Task configuration:
+  - `server` - path to main node server file
+  - `restartTasks` - list of task names to be executed on every server restart
+  - `port` - port under which server is running
+  - `idDev` - (default=true)
+ - `optimize` - optimize js and css files by concatenating and minifying and connects them (with cached angular
+ templates) to index.html.
+  Task configuration:
+   - `index` - path to index.html file or other html file
+   - `templateCache` - path to angular service that handle cached templates
+   - `build` - application build directory 
+ - `styles`
+ - `templatecache`
+ - `test`
+ - `wiredep`
 
 ### Reports
 All reports should be generated to `report` folder. Currently only code coverage report is possible to generate.
