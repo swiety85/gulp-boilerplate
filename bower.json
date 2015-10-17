@@ -1,6 +1,6 @@
 {
   "name": "gulp-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Damian Wajdlich"
   ],
@@ -14,8 +14,8 @@
     "tests"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/swiety85/gulp-boilerplate.git"
+    "type": "git",
+    "url": "https://github.com/swiety85/gulp-boilerplate.git"
   },
   "dependencies": {
     "angular": "~1.4.4",
