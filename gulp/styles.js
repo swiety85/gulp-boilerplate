@@ -20,13 +20,13 @@ module.exports = function (taskName, config, depTasks) {
     gulp.task(taskName, ['clean-styles'], function () {
         utils.log('Compiling: LESS --> CSS');
 
-        utils.log(config.dest.split('/').slice(0,-1).join('/'));
+        utils.log(config.dest);
         return gulp
             .src(config.src)
             .pipe(gp.debug())
             .pipe(gp.plumber())
             .pipe(gp.less())
             .pipe(gp.autoprefixer({browsers: ['last 2 versions', '> 5%']}))
-            .pipe(gulp.dest(config.dest.split('/').slice(0,-1).join('/')));
+            .pipe(gulp.dest(config.dest));
     });
 };

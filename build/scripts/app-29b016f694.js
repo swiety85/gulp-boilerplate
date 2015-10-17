@@ -1,0 +1,1 @@
+"use strict";angular.module("app",[]).run(function(){console.log("App running...")}).controller("Main",["$scope",function(t){t.test="OK"}]),angular.module("app").run(["$templateCache",function(t){t.put("scripts/main.tpl.html","<div>TEMPLATE WORKS!?</div>"),t.put("scripts/test/test.tpl.html","<div><span>test</span></div>")}]);

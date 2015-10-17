@@ -26,7 +26,7 @@ module.exports = function (taskName, config, depTasks) {
     gulp.task(taskName, depTasks, function () {
         var serverDir = config.server.split('/').slice(0, -1).join('/');
             nodeOptions = {
-                script: './src/server/app.js',
+                script: config.server,
                 delayTime: 1,
                 env: {
                     'PORT': port,

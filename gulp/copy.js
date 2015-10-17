@@ -6,8 +6,8 @@ var gulp = require('gulp'),
 
 /**
  * Config params:
- * - src: path to all font files
- * - dest: path to directory that will save file with templates
+ * - src: path to files to copy
+ * - dest: path to directory that will store copied directory
  * @param config
  */
 module.exports = function (taskName, config, depTasks) {
