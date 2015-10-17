@@ -64,7 +64,7 @@ tasks.bump('bump', {
     src: config.packages
 });
 
-// delete old build and temp dir
+// delete old build js files and js in temp dir
 tasks.clean('clean-code', {src: [].concat(
     config.temp + '**/*.js',
     config.build + '**/*.html',

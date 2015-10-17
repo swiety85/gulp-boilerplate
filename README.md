@@ -43,8 +43,43 @@ All frontend dependencies are place in `bower_components` gathered by [*Bower*](
 
 ### Build - distribution version
 Distribution version of of current application is created in `build` folder.
+
+### Available tasks
+ - `gulp` (=help) - gulp task listing
+ - `gulp help` - gulp task listing.
+ - `gulp build` - build distribution version of an application.
+ Subtasks: `optimize`, `images`, `fonts`.
+ - `gulp bump` - bump the version of your project. More details below in `Gulp task factories`.
+ - `gulp fonts` - copy fonts to build directory.
+ Subtasks: `clean-fonts`.
+ - `gulp images` - optimize and move images to build directory.
+ Subtasks: `clean-images`.
+ - `gulp inject` - inject all files (js and css) to index.html.
+ Subtasks: `wiredep`, `styles`, `templatecache`.
+ - `gulp lint` - run jshint against app js code.
+ - `gulp optimize` - optimize js and css files by concatenating and minifying and connects them (with cached angular
+ templates) to index.html.
+ Subtasks: `inject`, `test`.
+ - `gulp styles` - compiles LESS to CSS, and saves css to `_tmp` directory.
+ - `gulp templatecache` - concatenates and registers AngularJS templates in the $templateCache. Angular module
+ with cached templates is saved to to `_tmp` directory.
+ Subtasks: `clean-code`. 
+ - `gulp test` - run unit tests - close after testing is done.
+ Subtasks: `lint`, `templatecache`.
+ - `gulp autotest` - run unit tests and listen for changes (not close task).
+ Subtasks: 'lint', `templatecache`.
+ - `gulp wiredep` - bind index.html with dependencies (scripts and styles files).
+ - `gulp clean-code` - delete js, index.html from build directory and js from temp directory. 
+ - `gulp clean-fonts` - delete fonts from build directory.
+ - `gulp clean-images` - delete images from build directory.
+ - `gulp less-watcher` - LESS watcher, to recompile LESS to CSS after change.
+ Subtasks: `styles`.
+ - `gulp serve-build` - run server and watch for server changes - use distribution files from build folder (prod-mode).
+ Subtasks: `build`.
+ - `gulp serve-dev` - run server and watch for server changes - use source files (dev-mode).
+ Subtasks: `inject`, `less-watcher`.
  
-### Gulp tasks
+### Gulp task factories
 Gulp tasks has been divided into 3 levels:
  - task config - when it comes to customize tasks to your own project you should first try to do it 
  only with config part. All configuration for all tasks is placed in `gulp.config.js`.
@@ -60,7 +95,7 @@ Every factory module return function with unified list of parameters: task name,
 list of task dependency. Structure of configuration is different for different task.
  
 Available task factories:
- - `bump` - Bump the version of your project. Update bower.json and package.json.
+ - `bump` - bump the version of your project. Update bower.json and package.json.
  Task configuration:
   - `src` - paths to bower.json and package.json file
  Command options:
@@ -95,20 +130,39 @@ Available task factories:
  It also watches client changes to reload browser. It can be run in dev and prod mode.
  It use: [gulp-nodemon](https://github.com/JacksonGariety/gulp-nodemon) and [browserSync](http://www.browsersync.io/).
  Task configuration:
-  - `server` - path to main node server file
+  - `server` - path to app node server file
   - `restartTasks` - list of task names to be executed on every server restart
   - `port` - port under which server is running
   - `idDev` - (default=true)
  - `optimize` - optimize js and css files by concatenating and minifying and connects them (with cached angular
  templates) to index.html.
-  Task configuration:
+ Task configuration:
    - `index` - path to index.html file or other html file
    - `templateCache` - path to angular service that handle cached templates
    - `build` - application build directory 
- - `styles`
- - `templatecache`
- - `test`
- - `wiredep`
+ - `styles` - compiles LESS to CSS. It also use autoprefixer.
+ Task configuration:
+  - `src` - path to LESS files that needs to be compiled to CSS
+  - `dest` - path to directory that will save compiled CSS
+ - `templatecache` - concatenates and registers AngularJS templates in the $templateCache.
+ It use [gulp-angular-templatecache](https://github.com/miickel/gulp-angular-templatecache).
+ Task configuration:
+  - `src` - path to template files that needs to be concatenated to single file
+  - `dest` - path to directory that will save file with templates
+  - `fileName` - template cache file name
+  - `options` - options of template cache gulp module - gulp-angular-templatecache
+ - `test` - execute all unit tests by karam. Karam configuration available under: `karma.conf.js`.
+ Command options:
+  - `--startServers` - start app node server in parallel with unit tests.
+ Task configuration:
+  - `singleRun` - when set to true, task is not closed after unit tests checking process. It listens on file changes
+  to rerun tests again.
+  - `nodeServer` - path to app node server file
+  - `serverIntegrationSpecs` - path to server integration tests
+ - `wiredep` - wire up bower JS and CSS (and app JS) to the html
+ Task configuration:
+  - `index` - path to index.html file or other html file
+  - `src` - path to client source js files
 
 ### Reports
 All reports should be generated to `report` folder. Currently only code coverage report is possible to generate.
