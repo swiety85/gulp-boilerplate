@@ -1,8 +1,12 @@
 {
   "name": "gulp-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Boilerplate project with gulp environment",
-  "keywords": ["gulp", "tasks", "boilerplate"],
+  "keywords": [
+    "gulp",
+    "tasks",
+    "boilerplate"
+  ],
   "main": "build/index.html",
   "scripts": {
     "test": "gulp test"
@@ -10,8 +14,8 @@
   "author": "Damian Wajdlich",
   "license": "ISC",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/swiety85/gulp-boilerplate.git"
+    "type": "git",
+    "url": "https://github.com/swiety85/gulp-boilerplate.git"
   },
   "devDependencies": {
     "bower": "^1.4.1",
